@@ -1,7 +1,7 @@
-%%writefile translator.py
 import streamlit as st
 from googletrans import Translator, LANGUAGES
 from gtts import gTTS
+import gtts
 import os
 
 st.set_page_config(page_title="AI Translation Tool", page_icon="🌐")
@@ -34,7 +34,7 @@ with col2:
     target_lang = st.selectbox("Select target language:", lang_list)
     target_code = [k for k, v in LANGUAGES.items() if v == target_lang][0]
 
-text_to_translate = st.text_area("Type the text here:", placeholder="Salam, necəsən?")
+text_to_translate = st.text_area("Type the text here:", placeholder="Hello")
 
 if st.button("Translate ✨"):
     if text_to_translate.strip() == "":
@@ -54,20 +54,18 @@ if st.button("Translate ✨"):
 if st.session_state.translated_text:
     st.markdown("---")
     st.subheader("Result:")
-    
-    if src_code == 'auto':
-        detected_name = LANGUAGES.get(st.session_state.detected_lang, "Unknown")
-        st.info(f"🔍 Detected language: **{detected_name.capitalize()}**")
-    
     st.write(st.session_state.translated_text)
 
-    if st.button("Listen to Audio 🔊"):
-        try:
-            tts = gTTS(text=st.session_state.translated_text, lang=target_code)
-            tts.save("result.mp3")
-            st.audio("result.mp3")
-        except Exception as e:
-            st.error(f"Audio error: {e}")
+    if target_code in gtts.lang.tts_langs():
+        if st.button("Listen to Audio 🔊"):
+            try:
+                tts = gTTS(text=st.session_state.translated_text, lang=target_code)
+                tts.save("result.mp3")
+                st.audio("result.mp3")
+            except Exception as e:
+                st.error(f"Audio error: {e}")
+    else:
+        st.warning(f"⚠️ Audio synthesis is not available for the selected language ({target_lang}).")
 
 st.markdown("---")
 st.caption("AI Engineering Internship Project - Language Translation Tool")
