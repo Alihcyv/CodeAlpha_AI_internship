@@ -1,6 +1,6 @@
 # 🤖 m10 Hybrid FAQ Bot
 
-[Click here to test the application in your browser](https://codealphaaiinternship-nefezpy2pzzydug78qtrnd.streamlit.app)
+[Click here to test the application in your browser](https://codealphaaiinternship-nefezpy2pzzydug78qtrnd.streamlit.app) *(Note: The first load may take up to a minute to initialize the AI model)*
 ## Project Overview
 This project implements a **Hybrid Search Architecture** to combine the strengths of semantic meaning and exact keyword matching, ensuring accurate and hallucination-free responses.
 
