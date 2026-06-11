@@ -1,4 +1,3 @@
-%%writefile chatbot.py
 import bm25s
 import numpy as np
 import streamlit as st
