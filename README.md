@@ -20,3 +20,7 @@ Welcome to my internship repository for **CodeAlpha**. During this program, I de
 - **Libraries:** NumPy, Pandas, Matplotlib, OpenCV, Music21, NLTK
 - **Tools:** Jupyter Notebook, Git
 
+## Clone the Repository
+```bash
+git clone https://github.com/Alihcyv/CodeAlpha_AI_internship.git
+```
